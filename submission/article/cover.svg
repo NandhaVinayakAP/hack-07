@@ -1,0 +1,157 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="675" viewBox="0 0 1200 675">
+  <defs>
+    <!-- Deep navy background gradient -->
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#050D1F"/>
+      <stop offset="100%" stop-color="#0A1530"/>
+    </linearGradient>
+    <!-- Amber radial glow centred on the decider disc -->
+    <radialGradient id="glow" cx="62%" cy="47%" r="40%">
+      <stop offset="0%" stop-color="#FF9900" stop-opacity="0.30"/>
+      <stop offset="100%" stop-color="#FF9900" stop-opacity="0"/>
+    </radialGradient>
+    <!-- Orange gradient for the decider disc -->
+    <linearGradient id="disc" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#FFB547"/>
+      <stop offset="100%" stop-color="#E05C00"/>
+    </linearGradient>
+    <!-- Soft drop shadow -->
+    <filter id="shadow" x="-10%" y="-10%" width="120%" height="120%">
+      <feDropShadow dx="0" dy="4" stdDeviation="10" flood-color="#000" flood-opacity="0.50"/>
+    </filter>
+    <filter id="glow-filter">
+      <feGaussianBlur stdDeviation="18" result="blur"/>
+      <feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge>
+    </filter>
+  </defs>
+
+  <!-- Background -->
+  <rect width="1200" height="675" fill="url(#bg)"/>
+  <!-- Amber radial glow -->
+  <rect width="1200" height="675" fill="url(#glow)"/>
+
+  <!-- Grid lines (subtle) -->
+  <g stroke="#1A2845" stroke-width="1" opacity="0.6">
+    <line x1="0" y1="112" x2="1200" y2="112"/>
+    <line x1="0" y1="225" x2="1200" y2="225"/>
+    <line x1="0" y1="337" x2="1200" y2="337"/>
+    <line x1="0" y1="450" x2="1200" y2="450"/>
+    <line x1="0" y1="562" x2="1200" y2="562"/>
+    <line x1="150" y1="0" x2="150" y2="675"/>
+    <line x1="300" y1="0" x2="300" y2="675"/>
+    <line x1="450" y1="0" x2="450" y2="675"/>
+    <line x1="600" y1="0" x2="600" y2="675"/>
+    <line x1="750" y1="0" x2="750" y2="675"/>
+    <line x1="900" y1="0" x2="900" y2="675"/>
+    <line x1="1050" y1="0" x2="1050" y2="675"/>
+  </g>
+
+  <!-- ── LLM / Agent box (left) ── -->
+  <rect x="80" y="200" width="220" height="280" rx="20"
+        fill="#0D1B36" stroke="#3B6FD4" stroke-width="2" filter="url(#shadow)"/>
+  <text x="190" y="238" font-family="Inter,Helvetica,Arial,sans-serif"
+        font-size="14" font-weight="700" fill="#93C5FD" text-anchor="middle">STRANDS AGENTS</text>
+  <!-- Simulated chat lines -->
+  <rect x="104" y="255" width="172" height="10" rx="5" fill="#3B6FD4" opacity="0.6"/>
+  <rect x="104" y="274" width="130" height="10" rx="5" fill="#3B6FD4" opacity="0.4"/>
+  <rect x="104" y="310" width="155" height="10" rx="5" fill="#60A5FA" opacity="0.5"/>
+  <rect x="104" y="329" width="110" height="10" rx="5" fill="#60A5FA" opacity="0.3"/>
+  <rect x="104" y="364" width="172" height="10" rx="5" fill="#3B6FD4" opacity="0.6"/>
+  <rect x="104" y="383" width="90" height="10" rx="5" fill="#3B6FD4" opacity="0.4"/>
+  <!-- Label: Amazon Bedrock -->
+  <text x="190" y="450" font-family="Inter,Helvetica,Arial,sans-serif"
+        font-size="12" fill="#64748B" text-anchor="middle">Amazon Bedrock</text>
+  <text x="190" y="467" font-family="Inter,Helvetica,Arial,sans-serif"
+        font-size="11" fill="#475569" text-anchor="middle">Amazon Nova Pro</text>
+
+  <!-- ── Flow arrows LLM → Decider ── -->
+  <!-- top arrow (tool call) -->
+  <path d="M302 280 C 380 280, 440 300, 490 316" stroke="#FFB547" stroke-width="3"
+        fill="none" stroke-dasharray="6 4"/>
+  <polygon points="490,310 502,316 490,322" fill="#FFB547"/>
+  <!-- bottom arrow (verdict back) -->
+  <path d="M490 360 C 440 376, 380 396, 302 396" stroke="#34D399" stroke-width="3"
+        fill="none" stroke-dasharray="6 4"/>
+  <polygon points="302,390 290,396 302,402" fill="#34D399"/>
+
+  <!-- Labels on arrows -->
+  <text x="390" y="272" font-family="Inter,Helvetica,Arial,sans-serif"
+        font-size="11" fill="#FFB547" text-anchor="middle">tool call</text>
+  <text x="390" y="418" font-family="Inter,Helvetica,Arial,sans-serif"
+        font-size="11" fill="#34D399" text-anchor="middle">proceed / guide / confirm</text>
+
+  <!-- ── Strands Decider 2B disc (centre) ── -->
+  <circle cx="620" cy="337" r="105" fill="#FF9900" opacity="0.18" filter="url(#glow-filter)"/>
+  <circle cx="620" cy="337" r="88" fill="url(#disc)" filter="url(#shadow)"/>
+  <!-- Inner ring -->
+  <circle cx="620" cy="337" r="72" fill="none" stroke="#fff" stroke-width="2" opacity="0.25"/>
+  <!-- Centre icon: checkmark-ish spark -->
+  <circle cx="620" cy="337" r="28" fill="#fff" opacity="0.90"/>
+  <text x="620" y="344" font-family="Inter,Helvetica,Arial,sans-serif"
+        font-size="26" font-weight="900" fill="#E05C00" text-anchor="middle">2B</text>
+  <!-- Label below disc -->
+  <text x="620" y="460" font-family="Inter,Helvetica,Arial,sans-serif"
+        font-size="16" font-weight="700" fill="#FF9900" text-anchor="middle">Strands Decider 2B</text>
+  <text x="620" y="480" font-family="Inter,Helvetica,Arial,sans-serif"
+        font-size="12" fill="#94A3B8" text-anchor="middle">one forward pass per tool call</text>
+
+  <!-- ── Verdict panels (right) ── -->
+  <!-- search_grounded panel -->
+  <rect x="770" y="168" width="330" height="88" rx="16"
+        fill="#0D1B36" stroke="#34D399" stroke-width="2" filter="url(#shadow)"/>
+  <circle cx="800" cy="212" r="12" fill="#34D399" opacity="0.9"/>
+  <text x="820" y="206" font-family="Inter,Helvetica,Arial,sans-serif"
+        font-size="13" font-weight="700" fill="#34D399">search_grounded</text>
+  <text x="820" y="224" font-family="Inter,Helvetica,Arial,sans-serif"
+        font-size="12" fill="#94A3B8">all search args stated by user?</text>
+  <text x="820" y="242" font-family="Inter,Helvetica,Arial,sans-serif"
+        font-size="12" fill="#34D399">p_yes 0.92 → proceed</text>
+
+  <!-- args_grounded panel -->
+  <rect x="770" y="283" width="330" height="88" rx="16"
+        fill="#0D1B36" stroke="#60A5FA" stroke-width="2" filter="url(#shadow)"/>
+  <circle cx="800" cy="327" r="12" fill="#60A5FA" opacity="0.9"/>
+  <text x="820" y="321" font-family="Inter,Helvetica,Arial,sans-serif"
+        font-size="13" font-weight="700" fill="#60A5FA">args_grounded</text>
+  <text x="820" y="339" font-family="Inter,Helvetica,Arial,sans-serif"
+        font-size="12" fill="#94A3B8">booking args stated by user?</text>
+  <text x="820" y="357" font-family="Inter,Helvetica,Arial,sans-serif"
+        font-size="12" fill="#F87171">p_yes 0.17 → guide</text>
+
+  <!-- explicit_request panel -->
+  <rect x="770" y="398" width="330" height="88" rx="16"
+        fill="#0D1B36" stroke="#A78BFA" stroke-width="2" filter="url(#shadow)"/>
+  <circle cx="800" cy="442" r="12" fill="#A78BFA" opacity="0.9"/>
+  <text x="820" y="436" font-family="Inter,Helvetica,Arial,sans-serif"
+        font-size="13" font-weight="700" fill="#A78BFA">explicit_request</text>
+  <text x="820" y="454" font-family="Inter,Helvetica,Arial,sans-serif"
+        font-size="12" fill="#94A3B8">user asked to book right now?</text>
+  <text x="820" y="472" font-family="Inter,Helvetica,Arial,sans-serif"
+        font-size="12" fill="#34D399">p_yes 0.88 → proceed</text>
+
+  <!-- Arrows from disc to verdict panels -->
+  <path d="M700 300 C 730 280, 750 260, 770 256" stroke="#94A3B8" stroke-width="2"
+        fill="none" opacity="0.5"/>
+  <path d="M708 337 L 770 327" stroke="#94A3B8" stroke-width="2"
+        fill="none" opacity="0.5"/>
+  <path d="M700 375 C 730 395, 750 415, 770 442" stroke="#94A3B8" stroke-width="2"
+        fill="none" opacity="0.5"/>
+
+  <!-- ── Top title ── -->
+  <text x="600" y="68" font-family="Inter,Helvetica,Arial,sans-serif"
+        font-size="28" font-weight="800" fill="#F1F5F9" text-anchor="middle"
+        letter-spacing="-0.5">A travel-booking agent with grounded tool calls</text>
+  <text x="600" y="100" font-family="Inter,Helvetica,Arial,sans-serif"
+        font-size="16" fill="#94A3B8" text-anchor="middle">Strands Decider 2B guards every search and booking before it runs</text>
+
+  <!-- ── Bottom bar ── -->
+  <rect x="0" y="628" width="1200" height="47" fill="#050D1F" opacity="0.85"/>
+  <text x="60" y="657" font-family="Inter,Helvetica,Arial,sans-serif"
+        font-size="13" fill="#64748B">
+    #strands-decider-2b  #guardrails  amazon-bedrock  strands-agents
+  </text>
+  <text x="1140" y="657" font-family="Inter,Helvetica,Arial,sans-serif"
+        font-size="12" fill="#475569" text-anchor="end">
+    AWS User Group Madurai Hackathon Kit
+  </text>
+</svg>

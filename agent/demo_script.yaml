@@ -1,0 +1,55 @@
+# Demo video script for the travel-booking agent.
+# Each turn is typed into the demo UI against the real agent.
+# `narrate` describes the situation only; make_video.py appends what the decider actually decided.
+# Keep it under about 2.5 minutes.
+
+title: "A travel-booking agent that cannot search or book unless you tell it where and when"
+
+pitch:
+  "A travel-booking agent that searches flights and hotels and cannot run any tool —
+  search or booking — unless every argument (city, dates, traveller count) was explicitly
+  stated by the user. Strands Decider checks every tool call before it runs."
+
+features:
+  - "search and book flights and hotels through chat"
+  - "check every tool call — search and booking — with Strands Decider 2B before it runs"
+  - "ask a follow-up question instead of guessing missing cities, dates, or traveller counts"
+  - "deployed on Amazon Bedrock AgentCore Runtime"
+
+eager: true
+
+intro:
+  "This travel-booking agent talks through Amazon Bedrock. For this demo it is told to act
+  immediately without asking, and Strands Decider checks every tool call before it runs —
+  both searches and bookings."
+
+intro_normal:
+  "This travel-booking agent runs on Amazon Bedrock AgentCore Runtime. Strands Decider
+  checks every tool call before it runs — both searches and bookings."
+
+turns:
+  - say: "Find me a flight to London."
+    narrate:
+      "The user mentions a destination but gives no origin, date, or traveller count.
+      The agent tries to call search_flights with invented values."
+
+  - say: "I'm flying from New York on November 1st, just me."
+    narrate: "Now the user provides origin, date, and traveller count.
+      The search arguments are fully grounded."
+
+  - say: "FL001 looks good, go ahead and book it."
+    narrate: "The user explicitly names the flight and asks to book it.
+      The booking arguments are grounded and the request is explicit."
+
+  - say: "Also find me a hotel in London and book it."
+    narrate:
+      "The user asks for a hotel search but gives no check-in or check-out dates.
+      The agent tries to call search_hotels with invented dates."
+
+  - say: "I'll be there November 1st to 5th. Book the Grand Kensington."
+    narrate: "The user provides dates and names the hotel.
+      Both the search and the booking are now fully grounded."
+
+outro:
+  "One forward pass per tool-call decision, calibrated confidence, and Amazon Bedrock for
+  the conversation. Every search and booking is checked before it runs."

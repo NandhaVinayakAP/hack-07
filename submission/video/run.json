@@ -1,0 +1,144 @@
+[
+ {
+  "start": 2.0654220581054688,
+  "end": 12.781378030776978,
+  "out": {
+   "reply": "What is your origin city?",
+   "decisions": [
+    {
+     "pattern": "#guardrails",
+     "tool": "search_flights",
+     "args": {
+      "date": "2023-02-20",
+      "travellers": 1,
+      "origin": "User's current location",
+      "destination": "London"
+     },
+     "search_grounded": 0.315,
+     "decider_ms": 4237,
+     "verdict": "guide"
+    }
+   ],
+   "model_id": "us.amazon.nova-pro-v1:0",
+   "latency_ms": 7877,
+   "agent": "Travel-booking agent with Strands Decider 2B argument-grounding guardrail",
+   "eager": true
+  },
+  "say": "Find me a flight to London.",
+  "narrate": "The user mentions a destination but gives no origin, date, or traveller count. The agent tries to call search_flights with invented values."
+ },
+ {
+  "start": 12.78139591217041,
+  "end": 22.598337173461914,
+  "out": {
+   "reply": "I'm sorry, but I couldn't find any flights from New York to London on November 1st for 1 traveller. Would you like to search for flights on a different date?",
+   "decisions": [
+    {
+     "pattern": "#guardrails",
+     "tool": "search_flights",
+     "args": {
+      "date": "2023-11-01",
+      "travellers": 1,
+      "origin": "New York",
+      "destination": "London"
+     },
+     "search_grounded": 0.838,
+     "decider_ms": 3847,
+     "verdict": "proceed"
+    }
+   ],
+   "model_id": "us.amazon.nova-pro-v1:0",
+   "latency_ms": 6427,
+   "agent": "Travel-booking agent with Strands Decider 2B argument-grounding guardrail",
+   "eager": true
+  },
+  "say": "I'm flying from New York on November 1st, just me.",
+  "narrate": "Now the user provides origin, date, and traveller count. The search arguments are fully grounded."
+ },
+ {
+  "start": 22.598450183868408,
+  "end": 33.73959493637085,
+  "out": {
+   "reply": "Your flight from New York to London on November 1st has been successfully booked. Your booking reference is BK1001. The flight ID is FL001, and the total cost is $620 USD. If you have any further requests, please let me know.",
+   "decisions": [
+    {
+     "pattern": "#guardrails",
+     "tool": "book_flight",
+     "args": {
+      "travellers": 1,
+      "passenger_name": "User",
+      "flight_id": "FL001"
+     },
+     "args_grounded": 0.804,
+     "explicit_request": 0.82,
+     "decider_ms": 5473,
+     "verdict": "proceed"
+    }
+   ],
+   "model_id": "us.amazon.nova-pro-v1:0",
+   "latency_ms": 8145,
+   "agent": "Travel-booking agent with Strands Decider 2B argument-grounding guardrail",
+   "eager": true
+  },
+  "say": "FL001 looks good, go ahead and book it.",
+  "narrate": "The user explicitly names the flight and asks to book it. The booking arguments are grounded and the request is explicit."
+ },
+ {
+  "start": 33.73962116241455,
+  "end": 44.93436908721924,
+  "out": {
+   "reply": "What are your check-in and check-out dates?",
+   "decisions": [
+    {
+     "pattern": "#guardrails",
+     "tool": "search_hotels",
+     "args": {
+      "check_out": "2023-02-21",
+      "city": "London",
+      "check_in": "2023-02-20",
+      "guests": 1
+     },
+     "search_grounded": 0.464,
+     "decider_ms": 5125,
+     "verdict": "guide"
+    }
+   ],
+   "model_id": "us.amazon.nova-pro-v1:0",
+   "latency_ms": 8101,
+   "agent": "Travel-booking agent with Strands Decider 2B argument-grounding guardrail",
+   "eager": true
+  },
+  "say": "Also find me a hotel in London and book it.",
+  "narrate": "The user asks for a hotel search but gives no check-in or check-out dates. The agent tries to call search_hotels with invented dates."
+ },
+ {
+  "start": 44.934378147125244,
+  "end": 58.24798631668091,
+  "out": {
+   "reply": "I'm sorry, but I couldn't find the Grand Kensington hotel in London. Would you like to search for another hotel?",
+   "decisions": [
+    {
+     "pattern": "#guardrails",
+     "tool": "book_hotel",
+     "args": {
+      "check_out": "2023-11-05",
+      "guest_name": "User",
+      "hotel_id": "Grand Kensington",
+      "check_in": "2023-11-01",
+      "guests": 1
+     },
+     "args_grounded": 0.724,
+     "explicit_request": 0.829,
+     "decider_ms": 6672,
+     "verdict": "proceed"
+    }
+   ],
+   "model_id": "us.amazon.nova-pro-v1:0",
+   "latency_ms": 9660,
+   "agent": "Travel-booking agent with Strands Decider 2B argument-grounding guardrail",
+   "eager": true
+  },
+  "say": "I'll be there November 1st to 5th. Book the Grand Kensington.",
+  "narrate": "The user provides dates and names the hotel. Both the search and the booking are now fully grounded."
+ }
+]
